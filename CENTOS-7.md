@@ -2,6 +2,44 @@
 
 ## 常用运维命令
 
+* 配置阿里源，`yum`源配置目录为`/etc/yum.repos.d/`
+
+  1. 安装`wget`命令
+
+     ```shell
+     yum install wget
+     ```
+
+  2. 进入`yum`源配置目录
+
+     ```shell
+     cd /etc/yum.repos.d/
+     ```
+
+  3. 备份官方源
+
+     ```shell
+     mv CentOS-Base.repo CentOS-Base.repo.bak
+     ```
+
+  4. 下载阿里源
+
+     ```shell
+     wget -O CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
+     ```
+
+  5. 清除旧`yum`源的缓存
+
+     ```shell
+     yum clean all
+     ```
+
+  6. 更新`yum`源缓存
+
+     ```shell
+     yum makecache
+     ```
+
 * 防火墙设置
 
   ```shell
