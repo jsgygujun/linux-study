@@ -91,6 +91,96 @@
   /etc/init.d/network restart
   ```
 
-* 
+* 将普通用户加入到 `sudoer`
 
-* 
+  XXX is not in the sudoers file.  This incident will be reported.
+
+  1. 切换到 root 用户下
+  2. 编辑 `/etc/sudoers`，找到 `root ALL=(ALL) ALL`，在其下面添加 `xxx ALL=(ALL) ALL`, xxx 即为添加权限的用户。
+
+* 查看网络接口的UUID
+
+  ```shell
+  nmcli connection show
+  ```
+
+* 重启网络服务
+
+  ```shell
+  service network restart
+  ```
+
+* 安装 `ipconfig`工具
+
+  ```shell
+  yum install -y net-tools
+  ```
+
+* 安装 `rsync` 工具
+
+  ```shell
+  yum install -y rsync
+  ```
+
+  
+
+* .
+
+* .
+
+## VIM 设置
+
+VIM 的全局配置文件在 `/etc/vim/vimrc`或者`/etc/vimrc`，对所有用户生效。用户个人的配置在 `~/.vimrc`
+
+### 基本设置
+
+```shell
+set nocompatible
+syntax on
+set showmode
+set showcmd
+set encoding=utf-8
+set t_Co=256
+set autoindent
+set tabstop=2
+set softtabstop=2
+set number
+```
+
+
+
+## 常用脚本
+
+* 集群分发脚本 `xsync`
+
+  ```shell
+  #!/bin/bash
+  
+  pcount=$#
+  if((pcount==0)); then
+    echo no args;
+    exit;
+  fi
+  
+  p1=$1
+  fname=`basename $p1`
+  echo fname=$fname
+  
+  pdir=`cd -P $(dirname $p1); pwd`
+  echo pdir=$pdir
+  
+  user=`whoami`
+  
+  for ((host=12;host<14;host++)); do
+    echo --------------- hadoop-$host --------------
+    rsync -rvl $pdir/$fname $user@hadoop-$host:$pdir
+  done
+  ```
+
+* .
+
+* .
+
+* .
+
+* .
