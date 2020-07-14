@@ -216,7 +216,15 @@ set number
      sudo systemctl start mysql
      ```
 
-* 1
+* 安装 CDH 软件
+
+  1. 下载并安装 cdh5 源
+
+     ```shell
+     sudo wget -O /etc/yum.repo.d/cloudera-cdh5.repo https://archive.cloudera.com/cdh5/redhat/7/x86_64/cdh/cloudera-cdh5.repo
+     ```
+
+     
 
 * 1
 
