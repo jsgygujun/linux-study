@@ -184,3 +184,42 @@ set number
 * .
 
 * .
+
+## 常用软件安装
+
+* 安装 MySQL
+
+  1. 检查系统是否装有 MySQL
+
+     ```shell
+     rpm -qa | grep mysql
+     ```
+
+     返回空值，说明没有安装。
+
+  2. 下载并安装 MySQL 的 repo 源
+
+     ```shell
+     wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
+     sudo rpm -ivh mysql-community-release-el7-5.noarch.rpm
+     ```
+
+  3. 安装 MySQL
+
+     ```shell
+     sudo yum install mysql-server
+     ```
+
+  4. 启动 MySQL 服务
+
+     ```shell
+     sudo systemctl start mysql
+     ```
+
+* 1
+
+* 1
+
+* 1
+
+* 
